@@ -1,4 +1,5 @@
 #include "newClock.h"
+#include "newCLock.cpp"
 #include <iostream>
 
 int main() {
