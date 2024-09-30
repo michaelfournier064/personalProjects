@@ -15,8 +15,8 @@ public:
     newString(const newString&);
     ~newString();
     
-    char &operator[] (int);
-    const char &operator [] (int) const;
+    char &operator[] (size_t);
+    const char &operator [] (size_t) const;
     bool operator==(const newString&) const;
     bool operator!=(const newString&) const;
     bool operator<=(const newString&) const;

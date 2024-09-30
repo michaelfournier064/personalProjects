@@ -38,13 +38,13 @@ const newString& newString:: operator=(const newString& rightStr) {
     
     return *this;
 }
-char& newString::operator[] (int index)
+char& newString::operator[] (size_t index)
 {
-    assert(0 <= index && index < strLength);
+    assert(index < strLength);
     return strPtr[index];
 }
-const char& newString::operator[] (int index) const {
-    assert(0 <= index && index < strLength);
+const char& newString::operator[] (size_t index) const {
+    assert(index < strLength);
     return strPtr[index];
 }
     //Overloading the relational operators
