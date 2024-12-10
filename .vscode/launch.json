@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/micha/source/repos/personalProjects/C++/CS132/Chapter14/Example",
-      "program": "c:/Users/micha/source/repos/personalProjects/C++/CS132/Chapter14/Example/build/Debug/outDebug",
+      "cwd": "c:/Users/micha/source/repos/personalProjects/C++/CS132/Chapter15/Examples/15.1",
+      "program": "c:/Users/micha/source/repos/personalProjects/C++/CS132/Chapter15/Examples/15.1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
