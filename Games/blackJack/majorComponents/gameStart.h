@@ -9,6 +9,7 @@
 #include <vector>
 #include <limits>
 #include <string>
+#include <algorithm> // Include this for std::transform
 
 class GameStart {
 private:
@@ -20,11 +21,46 @@ private:
 
 public:
     int dealerPlayerNumber{};
-    int usersPlayerNumber{};
+    int userPlayerNumber{};
 
     // Constructor to initialize GameStart with an Auxiliary reference
     GameStart(Auxiliary& aux) : auxiliary(aux) {}
 
+        int placeBet(int playerId) {
+        int bet = 0;
+        while (true) {
+            std::cout << "Player " << playerId << ", you have " 
+                      << auxiliary.getBankroll(playerId) << " units.\n";
+            std::cout << "Enter your bet: ";
+            std::cin >> bet;
+
+            if (bet > 0 && bet <= auxiliary.getBankroll(playerId)) {
+                std::cout << "You bet " << bet << " units.\n";
+                return bet;
+            } else {
+                std::cout << "Invalid bet. Make sure it is positive and within your bankroll.\n";
+            }
+        }
+    }
+
+    bool playAgain() const {
+        std::string choice;
+        while (true) {
+            std::cout << "Would you like to play another game? (yes/no): ";
+            std::cin >> choice;
+
+            // Convert input to lowercase
+            std::transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
+
+            if (choice == "yes" || choice == "y") {
+                return true;  // Play another game
+            } else if (choice == "no" || choice == "n") {
+                return false; // End the game
+            } else {
+                std::cout << "Invalid choice. Please enter 'yes' or 'no'.\n";
+            }
+        }
+    } 
     void gameInitialization() {
         do {
             std::cout << "How many players will be participating in this game? ";
@@ -40,8 +76,8 @@ public:
     }
 
     void playerAssignment() {
-        usersPlayerNumber = auxiliary.restrictedRandom(1, playerAmount - 1);
-        std::cout << "You are player " << usersPlayerNumber << std::endl;
+        userPlayerNumber = auxiliary.restrictedRandom(1, playerAmount - 1);
+        std::cout << "You are player " << userPlayerNumber << std::endl;
         std::cout << "The dealer is player " << dealerPlayerNumber << std::endl;
     }
 
@@ -49,20 +85,39 @@ public:
         std::cout << "\nDealing initial cards..." << std::endl;
 
         for (int i = 1; i <= playerAmount; ++i) {
-            if (i == usersPlayerNumber) {
-                std::cout << "Your (Player " << i << ") cards are:" << std::endl;
+            if (i == userPlayerNumber) {
+                std::cout << "Your (Player " << i << ") cards are:\n";
             } else if (i == dealerPlayerNumber) {
-                std::cout << "Dealer (Player " << i << ")'s cards are:" << std::endl;
+                std::cout << "Dealer (Player " << i << ")'s cards are:\n";
             } else {
-                std::cout << "Player " << i << "'s cards are:" << std::endl;
+                std::cout << "Player " << i << "'s cards are:\n";
             }
 
             // Generate two cards for each player
             for (int j = 0; j < 2; ++j) {
                 cardGenerator.generateCard();
-                std::string card = cardGenerator.getCard();
-                auxiliary.addCardToPlayer(i, card); // Store the card dynamically
-                std::cout << "- " << card << std::endl;
+                std::string cardValue = cardGenerator.getCardValue();
+                std::string cardType = cardGenerator.getCardType();
+                auxiliary.addCardToPlayer(i, cardValue, cardType); // Store the card dynamically
+                std::cout << "- " << cardValue << " of " << cardType << std::endl;
+            }
+        }
+    }
+    bool userHitOrStand() {
+        std::string choice;
+        while (true) {
+            std::cout << "Do you want to hit or stand? (hit/stand): ";
+            std::cin >> choice;
+
+            // Convert input to lowercase for validation
+            std::transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
+
+            if (choice == "hit") {
+                return true;  // User chose to hit
+            } else if (choice == "stand") {
+                return false; // User chose to stand
+            } else {
+                std::cout << "Invalid choice. Please enter 'hit' or 'stand'.\n";
             }
         }
     }

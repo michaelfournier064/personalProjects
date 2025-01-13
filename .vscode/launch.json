@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/micha/source/repos/personalProjects/C++/Games/blackJack",
-      "program": "c:/Users/micha/source/repos/personalProjects/C++/Games/blackJack/build/Debug/outDebug",
+      "cwd": "c:/Users/micha/source/repos/personalProjects/Games/blackJack",
+      "program": "c:/Users/micha/source/repos/personalProjects/Games/blackJack/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -18,8 +18,7 @@
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
         }
-      ],
-      "preLaunchTask": "clean and build"
+      ]
     }
   ]
 }
