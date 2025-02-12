@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/micha/source/repos/personalProjects/Brilliant.org/python/introduction_to_python",
-      "program": "c:/Users/micha/source/repos/personalProjects/Brilliant.org/python/introduction_to_python/build/Debug/outDebug",
+      "cwd": "c:/Users/micha/source/repos/personalProjects/Brilliant.org/python/Programming with Python",
+      "program": "c:/Users/micha/source/repos/personalProjects/Brilliant.org/python/Programming with Python/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
